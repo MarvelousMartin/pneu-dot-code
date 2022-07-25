@@ -58,7 +58,7 @@ if (strlen($text) == 12) {
         <a><?php echo $fifth ?></a>
     </div>
 </div>
-<div class="flex-col md:flex justify-center m-5 w-4/5 mx-auto pt-12">
+<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12">
     <!--<div class="w-1/2 bg-blue-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
@@ -76,7 +76,7 @@ if (strlen($text) == 12) {
             jež najdete v posledním čtyřčíslí DOT kódu
         </p>
     </div>-->
-    <div class="mx-auto w-10/12 md:w-1/2 lg:w-1/4 bg-green-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
+    <div class="mx-auto w-10/12 md:w-1/2 bg-green-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
@@ -95,7 +95,7 @@ if (strlen($text) == 12) {
             Testovací firma
         </a>
     </div>
-    <div class="mx-auto w-10/12 md:w-1/2 lg:w-1/4 bg-red-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
+    <div class="mx-auto w-10/12 md:w-1/2 bg-red-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-slash-circle" viewBox="0 0 16 16">
@@ -114,7 +114,7 @@ if (strlen($text) == 12) {
             Testovací rozměr
         </a>
     </div>
-    <div class="mx-auto w-10/12 md:w-1/2 lg:w-1/4 bg-yellow-600 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
+    <div class="mx-auto w-10/12 md:w-1/2 bg-yellow-600 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
@@ -129,7 +129,7 @@ if (strlen($text) == 12) {
             <?php echo $third ?>
         </a>
     </div>
-    <div class="mx-auto w-10/12 md:w-1/2 lg:w-1/4 bg-blue-600 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
+    <div class="mx-auto w-10/12 md:w-1/2 bg-blue-600 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-calendar2-range" viewBox="0 0 16 16">
@@ -144,7 +144,7 @@ if (strlen($text) == 12) {
             <?php echo $fourth ?>. týden
         </a>
     </div>
-    <div class="mx-auto w-10/12 md:w-1/2 lg:w-1/4 bg-purple-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
+    <div class="mx-auto w-10/12 md:w-1/2 bg-purple-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
