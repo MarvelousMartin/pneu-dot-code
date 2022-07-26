@@ -29,23 +29,39 @@
         <span class="my-3 block text-lg font-medium text-black-800">DOT kód Vaší pneu</span>
         <input class="border-2 border-black-800 placeholder-slate-400 placeholder:text-slate-600 placeholder:text-lg h-12 ps-1 text-center" name="input" placeholder="&nbsp;DOTN5ADJU1R2213"/>
         <p class="mt-2 text-slate-400 text-md">
-            Obsahuje 8-13 čísel, s největší pravděpodobností 12.
+            Obsahuje 12 nebo 13 čísel.
         </p>
     </label>
 </form>
 <?php
+$error = "";
 $text = substr(strtoupper($_GET['input']), 3, strlen($_GET['input']) - 3);
-if (strlen($text) == 12) {
-    $arr = str_split($text, 4);
-    $first = substr($arr[0], 0, 2);
-    $second = substr($arr[0], 2, 2);
-    $third = $arr[1];
-    $fourth = substr($arr[2], 0, 2);
-    $fifth = substr($arr[2], 2, 2);
-} else {
-    echo "Chyba - DOT kód musí mít 12 číslic";
+switch(strlen($text)) {
+    case 12:
+        $arr = str_split($text, 4);
+        $first = substr($arr[0], 0, 2);
+        $second = substr($arr[0], 2, 2);
+        $third = $arr[1];
+        $fourth = substr($arr[2], 0, 2);
+        $fifth = substr($arr[2], 2, 2);
+        break;
+    case 13:
+        $first = substr($text, 0, 3);
+        $second = substr($text, 3, 2);
+        $third = substr($text, strlen($text)-8, 4);
+        $fourth = substr($text, strlen($text)-4, 2);
+        $fifth = substr($text, strlen($text)-2, 2);
+        break;
+    default:
+        $error = "DOT kód je neplatný.";
+        break;
 }
 ?>
+<div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold" id="hidden_div" style="display: none">
+    <div class="md:w-1/3 text-white bg-red-700 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
+        <a>Chyba: <?php echo $error ?></a>
+    </div>
+</div>
 <div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold" id="hidden_div" style="display: none">
     <div class="md:w-1/12 text-white bg-black rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
         <a>DOT</a>
