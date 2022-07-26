@@ -6,17 +6,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>DOT kód</title>
 
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
     <script>
-        const dropdownButton = document.querySelector("#dropdown");
-        const dropdownList = document.querySelector("#dropdown + div.hidden");
-
-        dropdownButton.addEventListener("click", () => {
-            dropdownList.classList.toggle("hidden");
-        });
+        function showHide() {
+            let div1 = document.getElementById("hidden_div");
+            let div2 = document.getElementById("hidden_div2");
+            let div3 = document.getElementById("shown_div");
+            if (div1.style.display === 'none' && div2.style.display === 'none' && div3.style.display === '') {
+                div1.style.display = '';
+                div2.style.display = '';
+                div3.style.display = 'none';
+            }
+        }
     </script>
 </head>
 <body>
-<form class="mt-5 text-center">
+<form class="mt-5 text-center" method="post" onsubmit="showHide(); return false;">
     <label class="block">
         <span class="my-3 block text-lg font-medium text-black-800">DOT kód Vaší pneu</span>
         <input class="border-2 border-black-800 placeholder-slate-400 placeholder:text-slate-600 placeholder:text-lg h-12 ps-1 text-center" name="input" placeholder="&nbsp;DOTN5ADJU1R2213"/>
@@ -26,7 +34,7 @@
     </label>
 </form>
 <?php
-$text = ltrim(strtoupper($_GET['input']), 'DOT');
+$text = substr(strtoupper($_GET['input']), 3, strlen($_GET['input']) - 3);
 if (strlen($text) == 12) {
     $arr = str_split($text, 4);
     $first = substr($arr[0], 0, 2);
@@ -38,7 +46,7 @@ if (strlen($text) == 12) {
     echo "Chyba - DOT kód musí mít 12 číslic";
 }
 ?>
-<div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold">
+<div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold" id="hidden_div" style="display: none">
     <div class="md:w-1/12 text-white bg-black rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
         <a>DOT</a>
     </div>
@@ -58,8 +66,7 @@ if (strlen($text) == 12) {
         <a><?php echo $fifth ?></a>
     </div>
 </div>
-<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12">
-    <!-- Tenhle div na prostredku, aby pri zadani cisla zmizel-->
+<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12" id="shown_div">
     <div class="w-1/2 bg-blue-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
@@ -77,7 +84,8 @@ if (strlen($text) == 12) {
             jež najdete v posledním čtyřčíslí DOT kódu
         </p>
     </div>
-    <!-- Tyhle divy na XL zobrazeni jsou furt jako flex-col -->
+</div>
+<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12" id="hidden_div2" style="display: none">
     <div class="mx-auto w-10/12 md:w-1/2 bg-green-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
