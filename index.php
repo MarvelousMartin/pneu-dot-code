@@ -66,8 +66,8 @@ if (strlen($text) == 12) {
         <a><?php echo $fifth ?></a>
     </div>
 </div>
-<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12" id="shown_div">
-    <div class="w-1/2 bg-blue-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl">
+<div class="flex justify-center mx-auto pt-12" id="shown_div">
+    <div class="w-3/4 md:w-1/2 bg-blue-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-patch-question" viewBox="0 0 16 16">
