@@ -56,6 +56,12 @@ switch(strlen($text)) {
         $error = "DOT kód je neplatný.";
         break;
 }
+if($fifth < 0 || $fifth > substr(date("Y"), 2, 2)) {
+    $error = "Špatný rok výroby.";
+}
+if($fourth < 0 || $fourth > 52) {
+    $error = "Špatný týden výroby.";
+}
 ?>
 <div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold" id="hidden_div" style="display: none">
     <div class="md:w-1/3 text-white bg-red-700 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
