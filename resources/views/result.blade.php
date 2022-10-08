@@ -2,90 +2,29 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>DOT kód</title>
-
-    <script
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script>
-    <script>
-        function showHide() {
-            let div1 = document.getElementById("hidden_div");
-            let div2 = document.getElementById("hidden_div2");
-            let div3 = document.getElementById("shown_div");
-            if (div1.style.display === 'none' && div2.style.display === 'none' && div3.style.display === '') {
-                div1.style.display = '';
-                div2.style.display = '';
-                div3.style.display = 'none';
-            }
-        }
-    </script>
 </head>
-<body>
-<form class="mt-5 text-center" method="post" onsubmit="showHide(); return false;">
-    <label class="block">
-        <span class="my-3 block text-lg font-medium text-black-800">DOT kód Vaší pneu</span>
-        <input class="border-2 border-black-800 placeholder-slate-400 placeholder:text-slate-600 placeholder:text-lg h-12 ps-1 text-center" name="input" placeholder="&nbsp;DOTN5ADJU1R2213"/>
-        <p class="mt-2 text-slate-400 text-md">
-            Obsahuje 12 nebo 13 čísel.
-        </p>
-    </label>
-</form>
-<?php
-$error = "";
-$text = substr(strtoupper($_GET['input']), 3, strlen($_GET['input']) - 3);
-switch(strlen($text)) {
-    case 12:
-        $arr = str_split($text, 4);
-        $first = substr($arr[0], 0, 2);
-        $second = substr($arr[0], 2, 2);
-        $third = $arr[1];
-        $fourth = substr($arr[2], 0, 2);
-        $fifth = substr($arr[2], 2, 2);
-        break;
-    case 13:
-        $first = substr($text, 0, 3);
-        $second = substr($text, 3, 2);
-        $third = substr($text, strlen($text)-8, 4);
-        $fourth = substr($text, strlen($text)-4, 2);
-        $fifth = substr($text, strlen($text)-2, 2);
-        break;
-    default:
-        $error = "DOT kód je neplatný.";
-        break;
-}
-if($fifth < 0 || $fifth > substr(date("Y"), 2, 2)) {
-    $error = "Špatný rok výroby.";
-}
-if($fourth < 0 || $fourth > 52) {
-    $error = "Špatný týden výroby.";
-}
-?>
-<div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold" id="hidden_div" style="display: none">
-    <div class="md:w-1/3 text-white bg-red-700 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
-        <a>Chyba: <?php echo $error ?></a>
-    </div>
-</div>
+<body class="bg-gray-500">
 <div class="flex justify-center text-center m-5 w-full mx-auto pt-12 w-3/4 text-xl font-bold" id="hidden_div" style="display: none">
     <div class="md:w-1/12 text-white bg-black rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
         <a>DOT</a>
     </div>
     <div class="md:w-1/12 text-white bg-green-700 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
-        <a><?php echo $first ?></a>
+        <a>{{ $first }}</a>
     </div>
     <div class="md:w-1/12 text-white bg-red-700 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
-        <a><?php echo $second ?></a>
+        <a>{{ $second }}</a>
     </div>
     <div class="md:w-1/10 lg:w-1/6 text-white bg-yellow-600 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
-        <a><?php echo $third ?></a>
+        <a>{{ $third }}</a>
     </div>
     <div class="md:w-1/12 text-white bg-blue-600 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
-        <a><?php echo $fourth ?></a>
+        <a>{{ $fourth }}</a>
     </div>
     <div class="md:w-1/12 text-white bg-purple-700 rounded-lg px-2 py-3 mx-1 ring-1 ring-slate-900/5 shadow-xl">
-        <a><?php echo $fifth ?></a>
+        <a>{{ $fifth }}</a>
     </div>
 </div>
 <div class="flex justify-center mx-auto pt-12" id="shown_div">
@@ -99,7 +38,7 @@ if($fourth < 0 || $fourth > 52) {
                 </svg>
             </span>
         </div>
-        <h3 class="text-black mt-5 text-base font-medium tracking-tight font-bold text-2xl">Co je DOT kód</h3>
+        <h3 class="text-white mt-5 text-base font-bold tracking-tight font-bold text-2xl">Co je DOT kód</h3>
         <p class="text-white mt-2 text-sm">
             DOT je kód o délce 8 až 13 znaků (typicky 12), který najdete na boční straně každé pneumatiky. Lze z něj
             vyčíst určité informace, které se pojí s původem pneumatiky, a to včetně orientačního data její výroby,
@@ -107,7 +46,7 @@ if($fourth < 0 || $fourth > 52) {
         </p>
     </div>
 </div>
-<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12" id="hidden_div2" style="display: none">
+<div class="flex flex-col xl:flex-row justify-around w-4/5 mx-auto gap-x-5 pt-12" id="hidden_div2">
     <div class="mx-auto w-10/12 md:w-1/2 bg-green-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
         <div>
             <span class="inline-flex items-center justify-center p-2 bg-slate-300 rounded-md shadow-lg">
@@ -120,11 +59,11 @@ if($fourth < 0 || $fourth > 52) {
         <h3 class="text-black mt-5 text-base font-medium tracking-tight font-bold text-2xl">Kód výrobce</h3>
         <br />
         <a class="text-white mt-2 text-3xl font-bold">
-            <?php echo $first ?>
+            {{ $first }}
         </a>
         <br />
         <a class="text-white mt-2 text-lg font-bold">
-            Testovací firma
+            {{ $manufacturer }}
         </a>
     </div>
     <div class="mx-auto w-10/12 md:w-1/2 bg-red-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
@@ -139,11 +78,11 @@ if($fourth < 0 || $fourth > 52) {
         <h3 class="text-black mt-5 text-base font-medium tracking-tight font-bold text-2xl">Rozměr pneu</h3>
         <br />
         <a class="text-white mt-2 text-3xl font-bold">
-            <?php echo $second ?>
+            {{ $second }}
         </a>
         <br />
         <a class="text-white mt-2 text-lg font-bold">
-            Testovací rozměr
+            {{ $size }}
         </a>
     </div>
     <div class="mx-auto w-10/12 md:w-1/2 bg-yellow-600 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
@@ -158,7 +97,7 @@ if($fourth < 0 || $fourth > 52) {
         <h3 class="text-black mt-5 text-base font-medium tracking-tight font-bold text-2xl">Výrobní kód</h3>
         <br />
         <a class="text-white mt-2 text-3xl font-bold">
-            <?php echo $third ?>
+            {{ $third }}
         </a>
     </div>
     <div class="mx-auto w-10/12 md:w-1/2 bg-blue-600 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
@@ -173,7 +112,7 @@ if($fourth < 0 || $fourth > 52) {
         <h3 class="text-black mt-5 text-base font-medium tracking-tight font-bold text-2xl">Týden výroby</h3>
         <br />
         <a class="text-white mt-2 text-3xl font-bold">
-            <?php echo $fourth ?>. týden
+            {{ $fourth }}. týden
         </a>
     </div>
     <div class="mx-auto w-10/12 md:w-1/2 bg-purple-700 rounded-lg px-6 py-8 m-3 ring-1 ring-slate-900/5 shadow-xl" id="dropdown">
@@ -188,7 +127,7 @@ if($fourth < 0 || $fourth > 52) {
         <h3 class="text-black mt-5 text-base font-medium tracking-tight font-bold text-2xl">Rok výroby</h3>
         <br />
         <a class="text-white mt-2 text-3xl font-bold">
-            20<?php echo $fifth ?>
+            20{{ $fifth }}
         </a>
     </div>
 </div>
